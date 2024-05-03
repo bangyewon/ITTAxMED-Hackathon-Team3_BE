@@ -1,123 +1,144 @@
+-- 열량
 CREATE TABLE Calories
 (
-    age_group    VARCHAR(10),
-    gender       VARCHAR(10),
+    id INT PRIMARY KEY,
+    min_age INT,
+    max_age INT,
     min_calories INT,
-    max_calories INT,
-    CONSTRAINT pk_calories PRIMARY KEY (age_group, gender)
+    max_calories INT
 );
 
+-- 탄수화물
 CREATE TABLE Carbohydrates
 (
-    age_group         VARCHAR(10),
-    gender            VARCHAR(10),
-    min_carbohydrates INT,
-    max_carbohydrates INT,
-    CONSTRAINT pk_carbohydrates PRIMARY KEY (age_group, gender)
+    id INT PRIMARY KEY,
+    min_age INT,
+    max_age INT,
+    min_carbohydrates FLOAT,
+    max_carbohydrates FLOAT
 );
 
+-- 단백질
 CREATE TABLE Proteins
 (
-    age_group    VARCHAR(10),
-    gender       VARCHAR(10),
-    min_proteins INT,
-    max_proteins INT,
-    CONSTRAINT pk_proteins PRIMARY KEY (age_group, gender)
+    id INT PRIMARY KEY,
+    min_age INT,
+    max_age INT,
+    min_proteins FLOAT,
+    max_proteins FLOAT
 );
 
+-- 지방
 CREATE TABLE Fats
 (
-    age_group VARCHAR(10),
-    gender    VARCHAR(10),
-    min_fats  INT,
-    max_fats  INT,
-    CONSTRAINT pk_fats PRIMARY KEY (age_group, gender)
+    id INT PRIMARY KEY,
+    min_age INT,
+    max_age INT,
+    min_fats FLOAT,
+    max_fats FLOAT
 );
 
+-- 콜레스테롤
 CREATE TABLE Cholesterol
 (
+    id INT PRIMARY KEY,
     min_cholesterol INT,
-    max_cholesterol INT,
-    CONSTRAINT pk_cholesterol PRIMARY KEY (min_cholesterol, max_cholesterol)
+    max_cholesterol INT
 );
 
+-- 포화지방
 CREATE TABLE SaturatedFats
 (
-    age_group          VARCHAR(10),
-    gender             VARCHAR(10),
+    id INT PRIMARY KEY,
+    min_age INT,
+    max_age INT,
     min_saturated_fats INT,
-    max_saturated_fats INT,
-    CONSTRAINT pk_saturated_fats PRIMARY KEY (age_group, gender)
+    max_saturated_fats FLOAT
 );
 
+-- 트랜스지방
 CREATE TABLE TransFats
 (
-    age_group      VARCHAR(10),
-    gender         VARCHAR(10),
+    id INT PRIMARY KEY,
+    min_age INT,
+    max_age INT,
     min_trans_fats INT,
-    max_trans_fats INT,
-    CONSTRAINT pk_trans_fats PRIMARY KEY (age_group, gender)
+    max_trans_fats FLOAT
 );
 
+-- 당류
 CREATE TABLE Sugars
 (
+    id INT PRIMARY KEY,
+    min_age INT,
+    max_age INT,
     min_sugars INT,
-    max_sugars INT,
-    CONSTRAINT pk_sugars PRIMARY KEY (min_sugars, max_sugars)
+    max_sugars FLOAT
 );
 
+-- 나트륨
 CREATE TABLE Sodium
 (
-    age_group  VARCHAR(10),
+    id INT PRIMARY KEY,
+    min_age INT,
+    max_age INT,
     min_sodium INT,
-    max_sodium INT,
-    CONSTRAINT pk_sodium PRIMARY KEY (age_group)
+    max_sodium INT
 );
 
-INSERT INTO Calories (age_group, gender, min_calories, max_calories)
-VALUES ('유아', '1-2', 900, 1170),
-       ('유아', '3-5', 1400, 1820),
-       ('남자', '6-8', 1700, 2210),
-       ('여자', '6-8', 1500, 1950);
+-- 열량
+INSERT INTO Calories (id, min_age, max_age, min_calories, max_calories)
+VALUES
+    (1, 1, 2, 900, 1170),
+    (2, 3, 5, 1400, 1820),
+    (3, 6, 8, 1700, 2210);
 
-INSERT INTO Carbohydrates (age_group, gender, min_carbohydrates, max_carbohydrates)
-VALUES ('유아', '1-2', GREATEST(130, (900 * 0.55)), 900 * 0.65),
-       ('유아', '3-5', GREATEST(130, (1400 * 0.55)), 1400 * 0.65),
-       ('남자', '6-8', GREATEST(130, (1700 * 0.55)), 1700 * 0.65),
-       ('여자', '6-8', GREATEST(130, (1500 * 0.55)), 1500 * 0.65);
+-- 탄수화물
+INSERT INTO Carbohydrates (id, min_age, max_age, min_carbohydrates, max_carbohydrates)
+VALUES
+    (1, 1, 2, 130, 30),
+    (2, 3, 5, 130, 30),
+    (3, 6, 8, 130, 30);
 
-INSERT INTO Proteins (age_group, gender, min_proteins, max_proteins)
-VALUES ('유아', '1-2', GREATEST(20, (900 * 0.07)), 900 * 0.2),
-       ('유아', '3-5', GREATEST(25, (1400 * 0.07)), 1400 * 0.2),
-       ('남자', '6-8', GREATEST(35, (1700 * 0.07)), 1700 * 0.2),
-       ('여자', '6-8', GREATEST(35, (1500 * 0.07)), 1500 * 0.2);
+-- 단백질
+INSERT INTO Proteins (id, min_age, max_age, min_proteins, max_proteins)
+VALUES
+    (1, 1, 2, 20, 8),
+    (2, 3, 5, 25, 8),
+    (3, 6, 8, 35, 8);
 
-INSERT INTO Fats (age_group, gender, min_fats, max_fats)
-VALUES ('유아', '1-2', 900 * 0.2, 900 * 0.35),
-       ('유아', '3-5', 1400 * 0.15, 1400 * 0.3),
-       ('남자', '6-8', 1700 * 0.15, 1700 * 0.3),
-       ('여자', '6-8', 1500 * 0.15, 1500 * 0.3);
+-- 지방
+INSERT INTO Fats (id, min_age, max_age, min_fats, max_fats)
+VALUES
+    (1, 1, 2, 8, 10),
+    (2, 3, 5, 8, 10),
+    (3, 6, 8, 8, 10);
 
-INSERT INTO Cholesterol (min_cholesterol, max_cholesterol)
-VALUES (0, 300);
+-- 콜레스테롤 <나이 상관 없음>
+INSERT INTO Cholesterol (id, min_cholesterol, max_cholesterol)
+VALUES (1, 0, 300);
 
-INSERT INTO SaturatedFats (age_group, gender, min_saturated_fats, max_saturated_fats)
-VALUES ('유아', '1-2', 0, 0),
-       ('유아', '3-5', 0, 1400 * 0.08),
-       ('남자', '6-8', 0, 1700 * 0.08),
-       ('여자', '6-8', 0, 1500 * 0.08);
+-- 포화지방산
+INSERT INTO SaturatedFats (id, min_age, max_age, min_saturated_fats, max_saturated_fats)
+VALUES
+    (1, 1, 2, 0, 0),
+    (2, 3, 5, 0, 12),
+    (3, 6, 8, 0, 12);
 
-INSERT INTO TransFats (age_group, gender, min_trans_fats, max_trans_fats)
-VALUES ('유아', '1-2', 0, 0),
-       ('유아', '3-5', 0, 1400 * 0.01),
-       ('남자', '6-8', 0, 1700 * 0.01),
-       ('여자', '6-8', 0, 1500 * 0.01);
+-- 트랜스지방
+INSERT INTO TransFats (id, min_age, max_age, min_trans_fats, max_trans_fats)
+VALUES
+    (1, 1, 2, 0, 0),
+    (2, 3, 5, 0, 0),
+    (3, 6, 8, 0, 0);
 
-INSERT INTO Sugars (min_sugars, max_sugars)
-VALUES (0, 900 * 0.2);
+-- 당
+INSERT INTO Sugars (id, min_age, max_age, min_sugars, max_sugars)
+VALUES (1, 1, 5, 0, 10);
 
-INSERT INTO Sodium (age_group, min_sodium, max_sodium)
-VALUES ('유아', 810, 1200),
-       ('유아', 1000, 1600),
-       ('남자', 1200, 1900),
-       ('여자', 1200, 1900);
+-- 나트륨
+INSERT INTO Sodium (id, min_age, max_age, min_sodium, max_sodium)
+VALUES
+    (1, 1, 2, 810, 1200),
+    (2, 3, 5, 1000, 1600),
+    (3, 6, 8, 1200, 1900);
