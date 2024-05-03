@@ -20,6 +20,7 @@ public class UserService {
                 .additionalInfo(userRequestDTO.getAdditionalInfo())
                 .gender(userRequestDTO.getGender())
                 .build();
+        userRepository.save(user);
     }
 
 
