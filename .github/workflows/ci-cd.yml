@@ -39,7 +39,7 @@ jobs:
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/itta_med_hackathon .
-          docker push ${{ secrets.DOCKER_USERNAME }}/kukathonf
+          docker push ${{ secrets.DOCKER_USERNAME }}/itta_med_hackathon
 
       ## deploy to production
       - name:  docker hub에서 pull 후 deploy합니다.
@@ -52,6 +52,6 @@ jobs:
           script: |
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/itta_med_hackathon:latest
             sudo docker stop $(sudo docker ps -q) 2>/dev/null || true
-            sudo docker run --rm -d -p 80:8080 --name kukathonf-server ${{ secrets.DOCKER_USERNAME }}/itta_med_hackathon:latest
+            sudo docker run --rm -d -p 80:8080 --name itta_med_hackathon-server ${{ secrets.DOCKER_USERNAME }}/itta_med_hackathon:latest
             sudo docker system prune -f
  
