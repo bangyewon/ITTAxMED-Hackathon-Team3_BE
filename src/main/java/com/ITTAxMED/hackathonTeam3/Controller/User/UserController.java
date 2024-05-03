@@ -35,11 +35,4 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED)
             .body("User updated successfully.");
     }
-
-//    @PostMapping("/chat")
-//    public ResponseEntity<String> chat(@PathVariable Long userId, @RequestBody UserRequestDTO userRequestDTO) {
-//        userService.update(userId, userRequestDTO);
-//        return ResponseEntity.status(HttpStatus.CREATED)
-//            .body("User updated successfully.");
-//    }
 }
