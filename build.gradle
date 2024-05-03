@@ -34,7 +34,6 @@ dependencies {
 
 
 	implementation 'io.springfox:springfox-boot-starter:3.0.0'//Swagger
-	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.7.0'
 
 
 	//json
