@@ -1,6 +1,7 @@
 package com.ITTAxMED.hackathonTeam3.Controller.Log;
 
 import com.ITTAxMED.hackathonTeam3.Service.Log.LogService;
+import com.ITTAxMED.hackathonTeam3.Service.User.UserService;
 import com.ITTAxMED.hackathonTeam3.domain.User.MedicalHistory;
 import com.ITTAxMED.hackathonTeam3.domain.User.User;
 import com.ITTAxMED.hackathonTeam3.web.MedicalHistoryRequestDTO;
@@ -20,17 +21,15 @@ public class LogController {
   private final LogService logService;
 
   @GetMapping("/{user}/medicalHistory")
-  public ResponseEntity<List<MedicalHistory>> getMedicalHistory(@PathVariable User user) {
-    List<MedicalHistory> medicalHistories = logService.getMedicalHistory(user);
+  public ResponseEntity<List<MedicalHistory>> getMedicalHistory(@PathVariable("user") Long userId) {
+    List<MedicalHistory> medicalHistories = logService.getMedicalHistory(userId);
     return ResponseEntity.ok().body(medicalHistories);
   }
 
-  @PostMapping("/{user}/medicalHistory")
-  public ResponseEntity<String> checkCondition(@PathVariable User user, @RequestBody MedicalHistoryRequestDTO medicalHistoryRequestDTO) {
-    logService.saveCondition(user, medicalHistoryRequestDTO);
+  @PostMapping("/{userid}/medicalHistory")
+  public ResponseEntity<String> checkCondition(@PathVariable Long userid, @RequestBody MedicalHistoryRequestDTO medicalHistoryRequestDTO) {
+    logService.saveCondition(userid, medicalHistoryRequestDTO);
     return ResponseEntity.status(HttpStatus.CREATED)
-        .body("User Condition saved successfully.");
+            .body("User Condition saved successfully.");
   }
-
-
 }

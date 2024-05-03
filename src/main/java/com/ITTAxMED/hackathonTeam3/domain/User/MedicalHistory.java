@@ -3,8 +3,6 @@ package com.ITTAxMED.hackathonTeam3.domain.User;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Entity
 @Getter
 @NoArgsConstructor
@@ -19,10 +17,9 @@ public class MedicalHistory {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(nullable = false)
-    private String condition;
+    @Column(nullable = true)
+    private String medicalCondition;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = true)
     private String caseHistory;
 
