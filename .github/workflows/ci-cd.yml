@@ -38,7 +38,7 @@ jobs:
       - name: docker image build 후 docker hub에 push합니다.
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/kukathonf .
+          docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/itta_med_hackathon .
           docker push ${{ secrets.DOCKER_USERNAME }}/kukathonf
 
       ## deploy to production
@@ -50,8 +50,8 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           envs: GITHUB_SHA
           script: |
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/kukathof:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/itta_med_hackathon:latest
             sudo docker stop $(sudo docker ps -q) 2>/dev/null || true
-            sudo docker run --rm -d -p 80:8080 --name kukathonf-server ${{ secrets.DOCKER_USERNAME }}/kukathonf:latest
+            sudo docker run --rm -d -p 80:8080 --name kukathonf-server ${{ secrets.DOCKER_USERNAME }}/itta_med_hackathon:latest
             sudo docker system prune -f
  
