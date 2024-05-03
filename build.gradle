@@ -25,7 +25,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-//	implementation 'mysql:mysql-connector-java:8.0.28'
+	implementation 'mysql:mysql-connector-java'
+	runtimeOnly("com.mysql:mysql-connector-j")
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -34,6 +35,15 @@ dependencies {
 
 
 
+=======
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'//Swagger
+	//json
+	implementation 'org.json:json:20231013'
+	//gson
+	implementation 'com.google.code.gson:gson:2.8.9'
+	//webclient
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+>>>>>>> 0d983b40aef5b4a48322a6039fd21e1180ce3c7b
 }
 
 tasks.named('test') {

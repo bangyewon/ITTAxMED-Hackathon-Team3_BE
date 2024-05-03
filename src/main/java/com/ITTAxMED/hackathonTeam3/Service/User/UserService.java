@@ -5,14 +5,19 @@ import com.ITTAxMED.hackathonTeam3.domain.User.Gender;
 import com.ITTAxMED.hackathonTeam3.domain.User.User;
 import com.ITTAxMED.hackathonTeam3.web.UserRequestDTO;
 import java.time.LocalDate;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
     private UserRepository userRepository;
+
+
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
 
     public void createUser(UserRequestDTO userRequestDTO) {
         User user = User.builder()

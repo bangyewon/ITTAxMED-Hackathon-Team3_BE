@@ -5,7 +5,6 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -55,7 +54,7 @@ public class FoodOpenApiClient {
 
             String descKor = foodObject.getString("DESC_KOR");
             String makerName = foodObject.getString("MAKER_NAME");
-            String  nutrCont1 = foodObject.getString("NUTR_CONT1");
+            String nutrCont1 = foodObject.getString("NUTR_CONT1");
             String nutrCont2 = foodObject.getString("NUTR_CONT2");
             String nutrCont3 = foodObject.getString("NUTR_CONT3");
             String nutrCont4 = foodObject.getString("NUTR_CONT4");
