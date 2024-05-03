@@ -1,8 +1,6 @@
 package com.ITTAxMED.hackathonTeam3.domain.Food;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
     @Entity
@@ -12,6 +10,7 @@ import lombok.*;
     @Builder
     public class Food {
         @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
 
         @Column(nullable = false)
@@ -20,29 +19,29 @@ import lombok.*;
 
 
         @Column(name = "kcal", nullable = true)
-        private int kcal;
+        private String kcal;
 
         @Column(name = "carbohydrate", nullable = true)
-        private int carbohydrate;
+        private String carbohydrate;
 
         @Column(name = "protein", nullable = true)
-        private int protein;
+        private String protein;
 
         @Column(name = "fat", nullable = true)
-        private int fat;
+        private String fat;
 
         @Column(name = "sugar", nullable = true)
-        private int sugar;
+        private String sugar;
 
         @Column(name = "natrium", nullable = true)
-        private int natrium;
+        private String natrium;
 
         @Column(name = "cholesterol", nullable = true)
-        private int cholesterol;
+        private String cholesterol;
 
         @Column(name = "fattyAcid", nullable = true)
-        private int fattyAcid;
+        private String fattyAcid;
 
         @Column(name = "transFat", nullable = true)
-        private int transFat;
+        private String transFat;
     }
