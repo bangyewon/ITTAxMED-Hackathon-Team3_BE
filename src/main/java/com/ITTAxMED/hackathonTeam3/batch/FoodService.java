@@ -14,7 +14,7 @@ public class FoodService {
     void addFood() {
         List<FoodResponse> food2 = foodOpenApiClient.getFood2();
         foodAppender.addFood(food2);
-        List<FoodResponse> food = foodOpenApiClient.getFood1();
-        foodAppender.addFood(food);
+//        List<FoodResponse> food = foodOpenApiClient.getFood1();
+//        foodAppender.addFood(food);
     }
 }
