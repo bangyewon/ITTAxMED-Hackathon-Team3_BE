@@ -1,10 +1,8 @@
 package com.ITTAxMED.hackathonTeam3.Service.User;
 
 import com.ITTAxMED.hackathonTeam3.Repository.User.UserRepository;
-import com.ITTAxMED.hackathonTeam3.domain.User.Gender;
 import com.ITTAxMED.hackathonTeam3.domain.User.User;
 import com.ITTAxMED.hackathonTeam3.web.UserRequestDTO;
-import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +10,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService {
     private UserRepository userRepository;
-
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -61,5 +58,5 @@ public class UserService {
             // 업데이트된 사용자 저장
             userRepository.save(user);
         }
-    }
+}
 

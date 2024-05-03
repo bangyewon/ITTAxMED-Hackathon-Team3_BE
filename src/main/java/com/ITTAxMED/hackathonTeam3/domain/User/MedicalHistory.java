@@ -19,6 +19,13 @@ public class MedicalHistory {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @Column(nullable = false)
+    private String condition;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = true)
+    private String caseHistory;
+
 
 
 }
