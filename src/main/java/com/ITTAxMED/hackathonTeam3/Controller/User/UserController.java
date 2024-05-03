@@ -1,5 +1,6 @@
 package com.ITTAxMED.hackathonTeam3.Controller.User;
 
+import com.ITTAxMED.hackathonTeam3.Service.User.UserService;
 import com.ITTAxMED.hackathonTeam3.web.UserRequestDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -12,13 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
-    @Operation(summary = "Create a new user", description = "Endpoint to create a new user")
+    private UserService userService;
 
-    @PostMapping("/users")
+    @PostMapping("/user")
     public ResponseEntity<String> createUser(@RequestBody UserRequestDTO userRequestDTO) {
-
-        Long userId = 1000L;
-
-        return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully. User ID: " + userId);
+        userService.createUser(userRequestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("User created successfully.");
     }
 }
