@@ -1,17 +1,22 @@
 package com.ITTAxMED.hackathonTeam3.Controller.User;
 
+import com.ITTAxMED.hackathonTeam3.Service.User.UserService;
 import com.ITTAxMED.hackathonTeam3.web.UserRequestDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
+
+    private UserService userService;
+
     @Operation(summary = "Create a new user", description = "Endpoint to create a new user")
 
     @PostMapping("/users")
@@ -19,6 +24,14 @@ public class UserController {
 
         Long userId = 1000L;
 
-        return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully. User ID: " + userId);
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body("User created successfully. User ID: " + userId);
+    }
+
+    @PostMapping("/update/{userId}")
+    public ResponseEntity<String> updateUser(@PathVariable Long userId, @RequestBody UserRequestDTO userRequestDTO) {
+        userService.update(userId, userRequestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body("User updated successfully.");
     }
 }
