@@ -5,6 +5,7 @@ import com.ITTAxMED.hackathonTeam3.web.UserRequestDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 public class UserController {
-    private UserService userService;
+
+    private final UserService userService;
 
 
     @PostMapping("/user")
@@ -31,6 +34,12 @@ public class UserController {
         userService.update(userId, userRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED)
             .body("User updated successfully.");
-
     }
+
+//    @PostMapping("/chat")
+//    public ResponseEntity<String> chat(@PathVariable Long userId, @RequestBody UserRequestDTO userRequestDTO) {
+//        userService.update(userId, userRequestDTO);
+//        return ResponseEntity.status(HttpStatus.CREATED)
+//            .body("User updated successfully.");
+//    }
 }
